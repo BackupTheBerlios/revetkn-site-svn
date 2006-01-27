@@ -92,8 +92,8 @@ public class AchewoodExtractor
             {
                 System.out.println("found a strip.");
 
-                createStorageDirectoriesIfNeeded(stripDate);
-                saveStrip(strip, createStripFilename(stripDate));
+                saveStrip(strip, stripDate);
+                
                 ++stripsRead;
             }
             else
@@ -102,6 +102,7 @@ public class AchewoodExtractor
             }
 
             stripDate = stripDate.plusDays(1);
+            
             waitAFewSeconds();
         }
 
@@ -142,18 +143,22 @@ public class AchewoodExtractor
     }
 
     /**
-     * Saves a strip to disk.
+     * Saves a strip to disk, using its date to figure out where to put it.
      * @param image The raw strip image to save.
-     * @param filename The name of the file to which the strip will be written.
+     * @see #createStripFilename(DateTime)
+     * @see #createStorageDirectoriesIfNeeded(DateTime)
+     * @param stripDate The date of the strip to save.
      * @throws IOException If an error occurs while saving the strip.
      */
-    protected void saveStrip(byte[] image, String filename) throws IOException
+    protected void saveStrip(byte[] image, DateTime stripDate) throws IOException
     {
         FileOutputStream os = null;
 
+        createStorageDirectoriesIfNeeded(stripDate);
+
         try
         {
-            os = new FileOutputStream(filename);
+            os = new FileOutputStream(createStripFilename(stripDate));
             os.write(image);
             os.flush();
         }
