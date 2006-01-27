@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+	Copyright (c) 2006 Mark Allen [mark.a.allen@gmail.com]
+	
+	Permission is hereby granted, free of charge, to any person obtaining a
+	copy of this software and associated documentation files (the "Software"), 
+	to deal in the Software without restriction, including without limitation
+	the rights to use, copy, modify, merge, publish, distribute, sublicense,
+	and/or sell copies of the Software, and to permit persons to whom the
+	Software is furnished to do so, subject to the following conditions:
+	
+	The above copyright notice and this permission notice shall be included in
+	all copies or substantial portions of the Software.
+	
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+	THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+	FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+	DEALINGS IN THE SOFTWARE.
+	
+	@author Mark Allen mark.a.allen@gmail.com
+	@version $Id$
+	@since 0.1
+	!-->
+
+<!-- Standard properties and classpaths -->
+<project name="revetkn.com properties">
+
+	<!-- Basic properties -->
+	<property name="project.name" value="revetkn.com" />
+	<property name="project.version" value="0.1" />
+	<property name="project.basepackage" value="com.revetkn.site" />
+	<property name="java.code.version" value="1.5" />
+	<property name="browser.executable" value="explorer" />
+	<property name="war.name" value="site.war" />
+
+	<!-- Basic locations -->
+	<property name="src.dir" location="src/app" />
+	<property name="src.test.dir" location="src/test" />
+	<property name="build.dir" location="build" />
+	<property name="build.classes.dir" location="${build.dir}/classes" />
+	<property name="build.3rdparty.dir"
+		location="${build.dir}/third-party-libraries" />
+	<property name="lib.dir" location="lib" />
+	<property name="web.dir" location="web" />
+	<property name="config.dir" location="configuration" />
+	<property name="misc.dir" location="misc" />
+	<property name="reports.dir" location="reports" />
+	<property name="javadoc.reports.dir"
+		location="${reports.dir}/javadoc" />
+	<property name="junit.reports.dir" location="${reports.dir}/junit" />
+
+	<!-- Javadoc properties -->
+	<property name="j2se.api.link"
+		value="http://java.sun.com/j2se/1.5.0/docs/api/" />
+	<property name="j2ee.api.link"
+		value="http://java.sun.com/j2ee/1.4/docs/api/" />
+	<property name="spring.api.link"
+		value="http://static.springframework.org/spring/docs/1.2.x/api/" />
+	<property name="aop.api.link"
+		value="http://aopalliance.sourceforge.net/doc/" />
+	<property name="javadoc.overview" value="${src.dir}/overview.html" />
+
+	<!-- Hibernate properties -->
+	<property name="config.hibernate.dir"
+		location="${config.dir}/hibernate" />
+		
+	<!-- Tomcat properties -->
+	<!-- C:\Program Files\Apache Software Foundation\Tomcat 5.5 -->
+	<property name="tomcat.home" value="${env.CATALINA_HOME}"/>
+
+	<!-- Build classpath -->
+	<path id="external.jars.classpath">
+
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+
+	</path>
+
+	<!-- Test classpath -->
+	<path id="entire.classpath">
+
+		<pathelement path="${build.classes.dir}" />
+		<pathelement path="${config.dir}" />
+		<path refid="external.jars.classpath" />
+
+	</path>
+	
+	<path id="tomcat.tasks.classpath">
+		<pathelement
+				path="C:\Program Files\Apache Software Foundation\Tomcat 5.5/server/lib/catalina-ant.jar" />
+	</path>
+
+	<taskdef name="deploy"
+		classname="org.apache.catalina.ant.DeployTask"
+		classpathref="tomcat.tasks.classpath"/>
+
+	<taskdef name="undeploy"
+		classname="org.apache.catalina.ant.UndeployTask"
+		classpathref="tomcat.tasks.classpath"/>
+		
+	<taskdef name="stop"
+		classname="org.apache.catalina.ant.StopTask"
+		classpathref="tomcat.tasks.classpath"/>		
+
+</project>

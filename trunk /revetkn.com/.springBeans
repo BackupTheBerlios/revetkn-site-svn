@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beansProjectDescription>
+	<configs>
+		<config>configuration/spring/util.xml</config>
+		<config>configuration/spring/service.xml</config>
+		<config>configuration/spring/data.xml</config>
+		<config>configuration/spring/webmvc.xml</config>
+	</configs>
+	<configSets>
+		<configSet>
+			<name>All</name>
+			<allowBeanDefinitionOverriding>false</allowBeanDefinitionOverriding>
+			<incomplete>false</incomplete>
+			<configs>
+				<config>configuration/spring/data.xml</config>
+				<config>configuration/spring/service.xml</config>
+				<config>configuration/spring/util.xml</config>
+				<config>configuration/spring/webmvc.xml</config>
+			</configs>
+		</configSet>
+	</configSets>
+</beansProjectDescription>
