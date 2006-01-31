@@ -37,7 +37,7 @@ public class Test
 
         try
         {
-            /*
+            /*  
             ctx = new ClassPathXmlApplicationContext(new String[] { "spring/util.xml",
                     "spring/service.xml", "spring/webmvc.xml", "spring/data.xml" });
                     */
