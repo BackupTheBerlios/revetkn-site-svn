@@ -1,5 +1,7 @@
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.revetkn.site.model.service.flickr.FlickrWebImageService;
+
 /**
  * Copyright (c) 2006 Mark Allen [mark.a.allen@gmail.com]
  *
@@ -35,8 +37,16 @@ public class Test
 
         try
         {
+            /*
             ctx = new ClassPathXmlApplicationContext(new String[] { "spring/util.xml",
                     "spring/service.xml", "spring/webmvc.xml", "spring/data.xml" });
+                    */
+
+            FlickrWebImageService imageService = new FlickrWebImageService();
+
+            System.out
+                    .println(imageService
+                            .findImages("http://www.flickr.com/services/feeds/photos_public.gne?id=18483805@N00&format=rss_200"));
 
         }
         finally
