@@ -26,7 +26,7 @@ import com.revetkn.site.model.service.flickr.FlickrWebImageService;
 
 /**
  * @author <a href="mailto:mark.a.allen@gmail.com">Mark Allen</a>
- * @version $Id$ $Rev$ $Revision$
+ * @version $Id:$ $Rev:$ $Revision:$
  * @since 0.1
  */
 public class Test
