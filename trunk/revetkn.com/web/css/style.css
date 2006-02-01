@@ -1,0 +1,130 @@
+/**
+ * Copyright (c) 2006 Mark Allen [mark.a.allen@gmail.com]
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a
+ * copy of this software and associated documentation files (the "Software"), 
+ * to deal in the Software without restriction, including without limitation
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense,
+ * and/or sell copies of the Software, and to permit persons to whom the
+ * Software is furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+ * DEALINGS IN THE SOFTWARE.
+ *
+ * Adapted from the design 'Refreshed' by Josh Powell: http://www.thejosher.com
+ * 
+ * @author Mark Allen - mark.a.allen@gmail.com
+ * @version $Id$
+ * @since 0.1
+ */
+span.nav {
+	padding-top: 0px;
+	padding-left: 5px;
+	text-align: left;
+	font-family: "Bitstream Vera Sans", Tahoma, Trebuchet MS, Arial,
+		Helvetica, sans-serif;
+}
+
+.nav a,.nav a:hover,.nav a:visited {
+	font-weight: bold;
+	color: #333;
+	text-decoration: none;
+	margin-right: 10px;
+	border-top: 3px solid #333333;
+	font-family: "Bitstream Vera Sans", Tahoma, Trebuchet MS, Arial,
+		Helvetica, sans-serif;
+}
+
+.nav a:hover {
+	border-top: 3px solid #888;
+	color: #444;
+}
+
+body {
+	padding-top: 10px;
+	padding-bottom: 15px;
+	margin: 0px;
+	background-image: url(background.jpg);
+	background-repeat: repeat;
+	color: #000;
+}
+
+#header {
+	margin-top: 10px;
+	margin-bottom: 0px;
+	margin-left: 15%;
+	margin-right: 15%;
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	background-color: #FFF;
+	color: #000;
+	border: 2px solid #555;
+	background-image: url(title.png);
+	background-repeat: repeat-x;
+	background-position: 0% 0%;
+}
+
+#content {
+	margin-top: 10px;
+	margin-bottom: 5px;
+	margin-left: 15%;
+	margin-right: 15%;
+	padding-top: 0px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	background-color: #FFF;
+	color: #000;
+	border: 2px solid #555;
+}
+
+h1 {
+	color: #333;
+	background-color: transparent;
+	font-family: "Bitstream Vera Sans", Tahoma, Trebuchet MS, Arial,
+		Helvetica, sans-serif;
+	font-size: 20px;
+	text-align: right;
+	padding-bottom: 0px;
+	margin: 5px;
+}
+
+h2 {
+	font-weight: bold;
+	color: #333;
+	background-color: transparent;
+	font-family: "Bitstream Vera Sans", Tahoma, Trebuchet MS, Arial,
+		Helvetica, sans-serif;
+	font-size: 16px;
+}
+
+p {
+	color: #333;
+	background-color: transparent;
+	font-family: "Bitstream Vera Sans", Tahoma, Trebuchet MS, Arial,
+		Helvetica, sans-serif;
+	font-size: .8em;
+}
+
+.code {
+	color: #339;
+	background-color: transparent;
+	font-family: "Lucida Console", "Courier New";
+	font-size: 0.9em;
+	padding-left: 40px;
+}
+
+pre {
+	background-color: transparent;
+	font-family: "Lucida Console", "Courier New";
+	font-size: 10px;
+}
