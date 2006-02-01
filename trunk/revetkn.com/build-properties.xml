@@ -62,6 +62,8 @@
 		value="http://static.springframework.org/spring/docs/1.2.x/api/" />
 	<property name="aop.api.link"
 		value="http://aopalliance.sourceforge.net/doc/" />
+	<property name="rome.api.link"
+		value="https://rome.dev.java.net/apidocs/0_7/" />
 	<property name="javadoc.overview" value="${src.dir}/overview.html" />
 
 	<!-- Hibernate properties -->

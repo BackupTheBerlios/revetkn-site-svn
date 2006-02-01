@@ -169,31 +169,14 @@
 
 		<mkdir dir="${javadoc.reports.dir}" />
 
-		<javadoc sourcepath="${src.dir}"
-			destdir="${javadoc.reports.dir}"
-			classpathref="external.jars.classpath"
-			source="${java.code.version}"
-			access="protected"
-			author="true"
-			doctitle="${project.name} v. ${project.version} API"
-			windowtitle="${project.name} v. ${project.version} API"
-			nodeprecated="false"
-			nodeprecatedlist="false"
-			overview="${javadoc.overview}"
-			noindex="false"
-			nonavbar="false"
-			notree="false"
-			packagenames="${project.basepackage}.*"
-			splitindex="true"
-			stylesheetfile="${misc.dir}/javadoc.css"
-			use="true"
-			version="true">
+		<javadoc sourcepath="${src.dir}" destdir="${javadoc.reports.dir}" classpathref="external.jars.classpath" source="${java.code.version}" access="protected" author="true" doctitle="${project.name} v. ${project.version} API" windowtitle="${project.name} v. ${project.version} API" nodeprecated="false" nodeprecatedlist="false" overview="${javadoc.overview}" noindex="false" nonavbar="false" notree="false" packagenames="${project.basepackage}.*" splitindex="true" stylesheetfile="${misc.dir}/javadoc.css" use="true" version="true">
 
 			<!-- Link to remote javadocs -->
 			<link href="${j2se.api.link}" />
 			<link href="${j2ee.api.link}" />
 			<link href="${spring.api.link}" />
 			<link href="${aop.api.link}" />
+			<link href="${rome.api.link}" />
 
 		</javadoc>
 
