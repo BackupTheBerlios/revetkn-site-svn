@@ -33,7 +33,7 @@ public class Test
 {
     public static void main(String args[])
     {
-        ClassPathXmlApplicationContext ctx = null;   
+        ClassPathXmlApplicationContext ctx = null;     
   
         try
         {
