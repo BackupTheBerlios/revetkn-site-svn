@@ -1,6 +1,3 @@
-<%@page language="java" errorPage="/error.jsp" pageEncoding="UTF-8"
-	contentType="text/html;charset=utf-8"%>
-
-<%@taglib uri="/jstl-c" prefix="c"%>
-<%@taglib uri="/jstl-fmt" prefix="fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
