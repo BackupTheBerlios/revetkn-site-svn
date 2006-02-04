@@ -28,6 +28,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
+import com.revetkn.site.model.service.BlogService;
+
 /**
  * @author <a href="mailto:mark.a.allen@gmail.com">Mark Allen</a>
  * @version $Id$
@@ -36,16 +38,30 @@ import org.springframework.web.servlet.mvc.Controller;
 public class BlogController implements Controller
 {
     /**
-     * @see org.springframework.web.servlet.mvc.Controller#handleRequest(javax.servlet.http.HttpServletRequest,
+     * @see org.springframework.web.servlet.mvc.Controller#handleRequest(
+     * javax.servlet.http.HttpServletRequest,
      * javax.servlet.http.HttpServletResponse)
      */
-    public ModelAndView handleRequest(HttpServletRequest arg0, HttpServletResponse arg1)
-            throws Exception
+    public ModelAndView handleRequest(HttpServletRequest request,
+            HttpServletResponse response) throws Exception
     {
-        System.out.println("test!");
-        
-        throw new UnsupportedOperationException(
-                "BlogController.handleRequest() has not been written yet.");
+        response.getWriter().println(
+                blogService.findBlogEntries("http://jroller.com/rss/revetkn"));
+
+        return null;
     }
 
+    /**
+     * Sets the blogService.
+     * @param blogService The blogService to set.
+     */
+    public void setBlogService(BlogService blogService)
+    {
+        this.blogService = blogService;
+    }
+
+    /**
+     * Service for retrieving blog information.
+     */
+    private BlogService blogService;
 }
