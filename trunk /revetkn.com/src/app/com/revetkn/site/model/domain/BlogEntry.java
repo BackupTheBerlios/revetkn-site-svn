@@ -23,9 +23,9 @@
 package com.revetkn.site.model.domain;
 
 import java.util.Date;
-import java.util.List;
 
 /**
+ * Domain object representing a blog entry.
  * @author <a href="mailto:mark.a.allen@gmail.com">Mark Allen</a>
  * @version $Id$
  * @since 0.1
@@ -53,24 +53,6 @@ public class BlogEntry
         buffer.append("]");
 
         return buffer.toString();
-    }
-
-    /**
-     * Gets the comments.
-     * @return Returns the comments.
-     */
-    public List<BlogComment> getComments()
-    {
-        return comments;
-    }
-
-    /**
-     * Sets the comments.
-     * @param comments The comments to set.
-     */
-    public void setComments(List<BlogComment> comments)
-    {
-        this.comments = comments;
     }
 
     /**
@@ -172,6 +154,4 @@ public class BlogEntry
     private String url;
 
     private String author;
-
-    private List<BlogComment> comments;
 }
