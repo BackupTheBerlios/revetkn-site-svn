@@ -52,7 +52,9 @@
 	</bean>
 
 	<bean id="blogController"
-		class="com.revetkn.site.controller.webmvc.BlogController" />
+		class="com.revetkn.site.controller.webmvc.BlogController">
+		<property name="blogService" ref="blogService" />
+	</bean>
 
 	<!-- Hibernate session interceptor [opens a session for the duration of the request] -->
 	<bean name="openSessionInViewInterceptor"
