@@ -34,7 +34,7 @@
 	<property name="project.version" value="0.1" />
 	<property name="project.basepackage" value="com.revetkn.site" />
 	<property name="java.code.version" value="1.5" />
-	<property name="browser.executable" value="explorer" />
+	<property name="browser.executable" value="C:\\Program Files\\Mozilla Firefox\\firefox" />
 	<property name="war.name" value="site.war" />
 
 	<!-- Basic locations -->
