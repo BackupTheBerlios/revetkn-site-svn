@@ -36,12 +36,7 @@
 	<description>
 		Application code for the revetkn.com website
 	</description>
-<!-- 
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>/WEB-INF/classes/spring/*.xml</param-value>
-	</context-param>
- -->
+
 	<servlet>
 		<servlet-name>spring</servlet-name>
 		<servlet-class>
@@ -49,9 +44,7 @@
 		</servlet-class>
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
-			<param-value>
-				/WEB-INF/classes/spring/*.xml
-			</param-value>
+			<param-value>/WEB-INF/classes/spring/*.xml</param-value>
 		</init-param>
 		<load-on-startup>2</load-on-startup>
 	</servlet>
@@ -69,17 +62,5 @@
 		<error-code>404</error-code>
 		<location>/WEB-INF/jsp/404.jsp</location>
 	</error-page>
-	<!-- 
-		<taglib>
-		<taglib-uri>/jstl-c</taglib-uri>
-		<taglib-location>/WEB-INF/tld/c-1.0.6.tld</taglib-location>
-		</taglib>
-		
-		<taglib>
-		<taglib-uri>/jstl-fmt</taglib-uri>
-		<taglib-location>/WEB-INF/tld/fmt-1.0.6.tld</taglib-location>
-		</taglib>
-		
-	-->
 
 </web-app>
