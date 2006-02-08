@@ -29,8 +29,17 @@ import net.sf.ehcache.Element;
 
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
+ * Intercepts method calls to retrieve feeds [really, any method whose first
+ * parameter is a unique <tt>String</tt> such as a URL] and caches the
+ * results. Useful for
+ * <p>
+ * Thanks to <a
+ * href="http://opensource2.atlassian.com/confluence/spring/display/DISC/Caching+the+result+of+methods+using+Spring+and+EHCache">Omar
+ * Irbouh</a> for the groundwork for this interceptor.
  * @author <a href="mailto:mark.a.allen@gmail.com">Mark Allen</a>
  * @version $Id$
  * @since 0.1
@@ -39,54 +48,75 @@ public class FeedCachingInterceptor implements MethodInterceptor
 {
     /**
      * @see org.aopalliance.intercept.MethodInterceptor#invoke(org.aopalliance.intercept.MethodInvocation)
+     * @throws IllegalArgumentException If applied to a method whose first
+     * argument is not of type <tt>String</tt>, or if the method result to
+     * cache does not implement <tt>Serializable</tt>.
      */
     public Object invoke(MethodInvocation methodInvocation) throws Throwable
     {
-        String cacheKey = buildCacheKey(methodInvocation);
-        
-        Element element = cache.get(cacheKey);
-        
-        if (element == null)
-        {
-            Object result = methodInvocation.proceed();
-            
-            element = new Element(cacheKey, (Serializable) result);
-            
-            cache.put(element);
-        }
-        
-        return element.getValue();
-    }
-
-    protected String buildCacheKey(MethodInvocation methodInvocation)
-    {
-        String targetName = methodInvocation.getThis().getClass().getName();
-        String methodName = methodInvocation.getMethod().getName();
         Object[] arguments = methodInvocation.getArguments();
 
-        StringBuffer buffer = new StringBuffer();
-
-        buffer.append(targetName).append(".").append(methodName);
-
-        if ((arguments != null) && (arguments.length != 0))
+        if (arguments == null || arguments.length == 0
+                || !(arguments[0] instanceof String))
         {
-            for (int i = 0; i < arguments.length; i++)
+            throw new IllegalArgumentException(
+                    "This interceptor is only applicable for methods whose "
+                            + "first parameter is of type String");
+        }
+
+        String cacheKey = (String) arguments[0];
+
+        Element element = cache.get(cacheKey);
+
+        if (element == null)
+        {
+            if (logger.isDebugEnabled())
             {
-                buffer.append(".").append(arguments[i]);
+                logger.debug("Cache miss for feed '" + cacheKey + "'");
+            }
+
+            Object result = methodInvocation.proceed();
+
+            if (!(result instanceof Serializable))
+            {
+                throw new IllegalArgumentException(
+                        "This interceptor is only applicable for methods which "
+                                + "implement Serializable");
+            }
+
+            element = new Element(cacheKey, (Serializable) result);
+
+            cache.put(element);
+        }
+        else
+        {
+            if (logger.isDebugEnabled())
+            {
+                logger.debug("Feed '" + cacheKey
+                        + "' is cached, using local copy");
             }
         }
 
-        return buffer.toString();
+        return element.getValue();
     }
 
     /**
-     * Sets the cache.
-     * @param cache The cache to set.
+     * Sets the method result cache.
+     * @param cache The method result cache.
      */
     public void setCache(Cache cache)
     {
         this.cache = cache;
     }
 
+    /**
+     * The cache in which method results are stored.
+     */
     private Cache cache;
+
+    /**
+     * Logger.
+     */
+    private static final Log logger = LogFactory
+            .getLog(FeedCachingInterceptor.class);
 }
