@@ -40,6 +40,7 @@
 			<list>
 				<value>classpath:/jdbc.properties</value>
 				<value>classpath:/hibernate.properties</value>
+				<value>classpath:/feeds.properties</value>
 			</list>
 		</property>
 	</bean>
@@ -48,6 +49,20 @@
 	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basename" value="text/text" />
+	</bean>
+
+	<!-- Caching -->
+	<bean id="cacheManager"
+		class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+		<property name="configLocation">
+			<value>classpath:/ehcache.xml</value>
+		</property>
+	</bean>
+
+	<bean id="feedCache"
+		class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+		<property name="cacheManager" ref="cacheManager" />
+		<property name="cacheName" value="com.revetkn.site.FEED_CACHE" />
 	</bean>
 
 </beans>
