@@ -22,15 +22,19 @@
 
 package com.revetkn.site.controller.webmvc;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 
+import com.revetkn.site.model.domain.BlogEntry;
 import com.revetkn.site.model.service.BlogService;
 
 /**
+ * Web controller that finds blog feed data and places it in the request.
  * @author <a href="mailto:mark.a.allen@gmail.com">Mark Allen</a>
  * @version $Id$
  * @since 0.1
@@ -45,10 +49,10 @@ public class BlogController implements Controller
     public ModelAndView handleRequest(HttpServletRequest request,
             HttpServletResponse response) throws Exception
     {
-        response.getWriter().println(
-                blogService.findBlogEntries("http://jroller.com/rss/revetkn"));
+        List<BlogEntry> blogEntries = blogService
+                .findBlogEntries(feedUrl);
 
-        return null;
+        return new ModelAndView(".blog-display", "blogEntries", blogEntries);
     }
 
     /**
@@ -61,7 +65,21 @@ public class BlogController implements Controller
     }
 
     /**
-     * Service for retrieving blog information.
+     * Sets the feedUrl.
+     * @param feedUrl The feedUrl to set.
+     */
+    public void setFeedUrl(String feedUrl)
+    {
+        this.feedUrl = feedUrl;
+    }
+    
+    /**
+     * Used to retrieve blog information.
      */
     private BlogService blogService;
+    
+    /**
+     * The URL of the feed to retrieve.
+     */
+    private String feedUrl;
 }
