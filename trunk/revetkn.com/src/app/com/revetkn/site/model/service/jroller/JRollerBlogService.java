@@ -41,6 +41,18 @@ import com.sun.syndication.io.FeedException;
 import com.sun.syndication.io.SyndFeedInput;
 
 /**
+ * /** <a href="http://jroller.com">JRoller</a> implementation of a
+ * <tt>BlogService</tt>.
+ * <p>
+ * Pulls an RSS feed from JRoller and binds the feed data to a list of
+ * <tt>BlogEntry</tt>.
+ * <p>
+ * <b>Example:</b>
+ * 
+ * <pre>
+ *  blogService.findBlogEntries(http://jroller.com/rss/revetkn);
+ * </pre>
+ * 
  * @author <a href="mailto:mark.a.allen@gmail.com">Mark Allen</a>
  * @version $Id$
  * @since 0.1
@@ -56,11 +68,10 @@ public class JRollerBlogService implements BlogService
         {
             URL url = new URL(feedUrl);
             SyndFeedInput input = new SyndFeedInput();
-            SyndFeed feed = input.build(new InputStreamReader(url.openStream()));
+            SyndFeed feed = input
+                    .build(new InputStreamReader(url.openStream()));
 
-            System.out.println(feed);
-
-            return extractBlogEntries(feed.getEntries());
+            return extractBlogEntries(feed);
         }
         catch (FeedException e)
         {
@@ -73,15 +84,17 @@ public class JRollerBlogService implements BlogService
     }
 
     /**
-     * 
-     * @param rawEntries
-     * @return
+     * Binds a feed to a list of <tt>BlogEntry</tt>.
+     * @param feed The feed whose data is bound.
+     * @return A list of <tt>BlogEntry</tt>s bound with feed data, or an
+     * empty list if no feed data was available.
      */
-    protected List<BlogEntry> extractBlogEntries(List rawEntries)
+    protected List<BlogEntry> extractBlogEntries(SyndFeed feed)
     {
+        List feedEntries = feed.getEntries();
         List<BlogEntry> blogEntries = new ArrayList<BlogEntry>();
 
-        for (Iterator i = rawEntries.iterator(); i.hasNext();)
+        for (Iterator i = feedEntries.iterator(); i.hasNext();)
         {
             SyndEntry syndEntry = (SyndEntry) i.next();
             BlogEntry blogEntry = new BlogEntry();
