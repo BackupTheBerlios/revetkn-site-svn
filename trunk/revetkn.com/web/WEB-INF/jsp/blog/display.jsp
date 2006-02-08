@@ -26,3 +26,12 @@
 
 <%@ include file="/WEB-INF/jsp/taglibs.jsp"%>
 
+<c:forEach items="${blogEntries}" var="blogEntry">
+
+	<h2><a href="${blogEntry.url}">${blogEntry.title}</a><br />
+	<span class="blogDate"><fmt:formatDate value="${blogEntry.date}"
+		pattern="MMMM d, yyyy 'at' h:mm a" /></span></h2>
+
+	<p>${blogEntry.content}</p>
+
+</c:forEach>
