@@ -39,6 +39,7 @@
 		<property name="mappings">
 			<props>
 				<prop key="/blog.html">blogController</prop>
+				<prop key="/photos.html">photoController</prop>
 			</props>
 		</property>
 
@@ -54,6 +55,13 @@
 	<bean id="blogController"
 		class="com.revetkn.site.controller.webmvc.BlogController">
 		<property name="blogService" ref="blogService" />
+		<property name="feedUrl" value="${feed.blog}" />
+	</bean>
+
+	<bean id="photoController"
+		class="com.revetkn.site.controller.webmvc.PhotoController">
+		<property name="webImageService" ref="webImageService" />
+		<property name="feedUrl" value="${feed.photo}" />
 	</bean>
 
 	<!-- Hibernate session interceptor [opens a session for the duration of the request] -->
@@ -64,17 +72,22 @@
 		</property>
 	</bean>
 
-	<bean id="viewResolver"
+	<!-- Tiles support -->
+	<bean id="tilesConfigurer"
+		class="org.springframework.web.servlet.view.tiles.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/tiles-definitions.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="tilesViewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="viewClass">
-			<value>org.springframework.web.servlet.view.JstlView</value>
-		</property>
-		<property name="prefix">
-			<value>/WEB-INF/jsp/</value>
-		</property>
-		<property name="suffix">
-			<value>.jsp</value>
-		</property>
+		<property name="requestContextAttribute"
+			value=" requestContext " />
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.tiles.TilesJstlView" />
 	</bean>
 
 	<!-- Declarative exception handling support -->
