@@ -74,7 +74,7 @@ public class FlickrWebImageService implements WebImageService
         {
             URL url = new URL(feedUrl);
             SyndFeedInput input = new SyndFeedInput();
-            SyndFeed feed = input.build(new InputStreamReader(url.openStream()));
+            SyndFeed feed = input.build(new InputStreamReader(url.openStream()));           
 
             return bindImageFeed(feed);
         }
