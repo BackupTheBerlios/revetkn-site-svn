@@ -30,7 +30,18 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-	<bean id="blogService"
-		class="com.revetkn.site.model.service.jroller.JRollerBlogService" />
+	<bean id="blogService" parent="abstractFeedCachingBean">
+		<property name="target">
+			<bean
+				class="com.revetkn.site.model.service.jroller.JRollerBlogService" />
+		</property>
+	</bean>
+
+	<bean id="webImageService" parent="abstractFeedCachingBean">
+		<property name="target">
+			<bean
+				class="com.revetkn.site.model.service.flickr.FlickrWebImageService" />
+		</property>
+	</bean>
 
 </beans>
