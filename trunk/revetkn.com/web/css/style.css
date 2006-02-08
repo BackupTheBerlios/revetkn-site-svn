@@ -25,6 +25,45 @@
  * @version $Id$
  * @since 0.1
  */
+body {
+	padding-top: 10px;
+	padding-bottom: 15px;
+	margin: 0px;
+	background-image: url(../images/background.jpg);
+	background-repeat: repeat;
+	color: #000;
+}
+
+#header {
+	margin-top: 10px;
+	margin-bottom: 0px;
+	margin-left: 15%;
+	margin-right: 15%;
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	background-color: #FFF;
+	color: #000;
+	border: 2px solid #555;
+	background-image: url(../images/title.gif);
+	background-repeat: repeat-x;
+	background-position: 0% 0%;
+}
+
+#content {
+	margin-top: 10px;
+	margin-bottom: 5px;
+	margin-left: 15%;
+	margin-right: 15%;
+	padding-top: 0px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	background-color: #FFF;
+	color: #000;
+	border: 2px solid #555;
+}
+
 span.nav {
 	padding-top: 0px;
 	padding-left: 5px;
@@ -48,43 +87,25 @@ span.nav {
 	color: #444;
 }
 
-body {
-	padding-top: 10px;
-	padding-bottom: 15px;
-	margin: 0px;
-	background-image: url(background.jpg);
-	background-repeat: repeat;
-	color: #000;
+a,a:hover,a:visited {
+	font-weight: bold;
+	color: #666;
+	text-decoration: none;
+	font-family: "Bitstream Vera Sans", Tahoma, Trebuchet MS, Arial,
+		Helvetica, sans-serif;
 }
 
-#header {
-	margin-top: 10px;
-	margin-bottom: 0px;
-	margin-left: 15%;
-	margin-right: 15%;
-	padding-top: 10px;
-	padding-left: 10px;
-	padding-right: 10px;
-	background-color: #FFF;
-	color: #000;
-	border: 2px solid #555;
-	background-image: url(title.png);
-	background-repeat: repeat-x;
-	background-position: 0% 0%;
+a:hover {
+	color: #333;
 }
 
-#content {
-	margin-top: 10px;
-	margin-bottom: 5px;
-	margin-left: 15%;
-	margin-right: 15%;
-	padding-top: 0px;
-	padding-bottom: 10px;
-	padding-left: 10px;
-	padding-right: 10px;
-	background-color: #FFF;
-	color: #000;
-	border: 2px solid #555;
+h2 .blogDate {
+	color: #333;
+	background-color: transparent;
+	font-family: "Bitstream Vera Sans", Tahoma, Trebuchet MS, Arial,
+		Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: italic;
 }
 
 h1 {
