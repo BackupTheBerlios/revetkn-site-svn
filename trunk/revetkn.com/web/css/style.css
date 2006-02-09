@@ -89,14 +89,15 @@ span.nav {
 
 a,a:hover,a:visited {
 	font-weight: bold;
-	color: #666;
+	color: #333;
 	text-decoration: none;
 	font-family: "Bitstream Vera Sans", Tahoma, Trebuchet MS, Arial,
 		Helvetica, sans-serif;
 }
 
 a:hover {
-	color: #333;
+	color: #666;
+	text-decoration: underline;
 }
 
 h2 .blogDate {
