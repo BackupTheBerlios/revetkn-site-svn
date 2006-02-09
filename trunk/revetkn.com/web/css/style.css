@@ -128,7 +128,7 @@ h2 {
 	font-size: 16px;
 }
 
-p {
+#contentBlock {
 	color: #333;
 	background-color: transparent;
 	font-family: "Bitstream Vera Sans", Tahoma, Trebuchet MS, Arial,
@@ -145,7 +145,9 @@ p {
 }
 
 pre {
-	background-color: transparent;
+	background-color: #F1F1F1;
+	border: 1px solid #555;
+	padding: 5px;
 	font-family: "Lucida Console", "Courier New";
 	font-size: 10px;
 }

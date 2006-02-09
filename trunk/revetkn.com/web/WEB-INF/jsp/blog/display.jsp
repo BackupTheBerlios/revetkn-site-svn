@@ -32,6 +32,6 @@
 	<span class="blogDate"><fmt:formatDate value="${blogEntry.date}"
 		pattern="MMMM d, yyyy 'at' h:mm a" /></span></h2>
 
-	<p>${blogEntry.content}</p>
+	<div id="contentBlock">${blogEntry.content}</div>
 
 </c:forEach>

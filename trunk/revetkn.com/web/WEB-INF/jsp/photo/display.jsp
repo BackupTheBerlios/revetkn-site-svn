@@ -28,6 +28,6 @@
 
 <center><c:forEach items="${photos}" var="photo">
 
-	<p>${photo.description}</p>
+	<div id="contentBlock">${photo.description}</div>
 
 </c:forEach></center>
