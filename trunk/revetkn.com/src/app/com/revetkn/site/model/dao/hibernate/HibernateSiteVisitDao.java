@@ -41,9 +41,9 @@ import com.revetkn.site.model.domain.SiteVisit;
  * @version $Id$
  * @since 0.1
  */
-@NamedQuery(name = "siteVisit.recentFirst", queryString = "select s from SiteVisit s order by s.date desc")
-public class HibernateSiteVisitDao extends AbstractHibernateDao<SiteVisit, Long>
-        implements SiteVisitDao
+@NamedQuery(name = "siteVisit.recentFirst", queryString = "from SiteVisit siteVisit order by siteVisit.date desc")
+public class HibernateSiteVisitDao extends
+        AbstractHibernateDao<SiteVisit, Long> implements SiteVisitDao
 {
     /**
      * @see com.revetkn.site.model.dao.SiteVisitDao#findRecentVisits(java.lang.Integer)
@@ -57,8 +57,8 @@ public class HibernateSiteVisitDao extends AbstractHibernateDao<SiteVisit, Long>
             /**
              * @see org.springframework.orm.hibernate3.HibernateCallback#doInHibernate(org.hibernate.Session)
              */
-            public Object doInHibernate(Session session) throws HibernateException,
-                    SQLException
+            public Object doInHibernate(Session session)
+                    throws HibernateException, SQLException
             {
                 Query query = session.getNamedQuery("siteVisit.recentFirst");
 
