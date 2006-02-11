@@ -38,8 +38,8 @@
 
 		<property name="mappings">
 			<props>
-				<prop key="/blog.html">blogController</prop>
-				<prop key="/photos.html">photoController</prop>
+				<prop key="/blog.url">blogController</prop>
+				<prop key="/photos.url">photoController</prop>
 			</props>
 		</property>
 

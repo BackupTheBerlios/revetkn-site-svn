@@ -28,7 +28,7 @@
 
 <h1>revetkn.com</h1>
 
-<span class="nav"> <a href="<c:url value="/blog.html"/>">blog</a> <a
-	href="<c:url value="/photos.html"/>">photos</a> <a
-	href="<c:url value="/open-source.html"/>">open source</a> <a
-	href="<c:url value="/about.html"/>">about</a> </span>
+<span class="nav"> <a href="<c:url value="/blog.url"/>">blog</a> <a
+	href="<c:url value="/photos.url"/>">photos</a> <a
+	href="<c:url value="/open-source.url"/>">open source</a> <a
+	href="<c:url value="/about.url"/>">about</a> </span>
