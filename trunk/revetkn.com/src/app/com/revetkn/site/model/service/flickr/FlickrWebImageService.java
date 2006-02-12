@@ -67,14 +67,16 @@ public class FlickrWebImageService implements WebImageService
     {
         if (logger.isDebugEnabled())
         {
-            logger.debug("Attempting to extract a Flickr image feed from " + feedUrl);
+            logger.debug("Attempting to extract a Flickr image feed from "
+                    + feedUrl);
         }
 
         try
         {
             URL url = new URL(feedUrl);
             SyndFeedInput input = new SyndFeedInput();
-            SyndFeed feed = input.build(new InputStreamReader(url.openStream()));           
+            SyndFeed feed = input
+                    .build(new InputStreamReader(url.openStream()));
 
             return bindImageFeed(feed);
         }
@@ -91,8 +93,8 @@ public class FlickrWebImageService implements WebImageService
     /**
      * Binds a feed to a list of <tt>WebImage</tt>.
      * @param feed The feed whose data is bound.
-     * @return A list of <tt>WebImage</tt>s bound with feed data, or an empty list if
-     * no feed data was available.
+     * @return A list of <tt>WebImage</tt>s bound with feed data, or an empty
+     * list if no feed data was available.
      */
     protected List<WebImage> bindImageFeed(SyndFeed feed)
     {
@@ -104,9 +106,10 @@ public class FlickrWebImageService implements WebImageService
             SyndEntry syndEntry = (SyndEntry) i.next();
             WebImage webImage = new WebImage();
 
-            webImage.setDescription(syndEntry.getDescription().getValue());
             webImage.setUrl(syndEntry.getLink());
             webImage.setDate(syndEntry.getPublishedDate());
+            webImage.setDescription(removeEmailLink(syndEntry.getDescription()
+                    .getValue()));
 
             webImages.add(webImage);
         }
@@ -115,7 +118,36 @@ public class FlickrWebImageService implements WebImageService
     }
 
     /**
+     * Gets rid of the email link Flickr embeds in the image description.
+     * <p>
+     * TODO: Need to write a Rome parser that handles Media RSS feeds instead of
+     * an ugly hack like this.
+     * @param description Image description for which the email link is to be
+     * removed.
+     * @return Image description with the email link removed.
+     * @throws IllegalStateException If the image description is in an
+     * unexpected format.
+     */
+    protected String removeEmailLink(String description)
+    {
+        int index = 0;
+
+        for (int i = 0; i < 4; i++)
+        {
+            index = description.indexOf(">", index) + 1;
+
+            if (index == -1)
+            {
+                throw new IllegalStateException("Flickr feed reading failed");
+            }
+        }
+
+        return description.substring(index);
+    }
+
+    /**
      * Logger.
      */
-    private static final Log logger = LogFactory.getLog(FlickrWebImageService.class);
+    private static final Log logger = LogFactory
+            .getLog(FlickrWebImageService.class);
 }
