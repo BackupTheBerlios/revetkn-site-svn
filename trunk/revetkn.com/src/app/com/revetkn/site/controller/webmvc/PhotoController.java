@@ -28,7 +28,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.Controller;
+import org.springframework.web.servlet.mvc.ParameterizableViewController;
 
 import com.revetkn.site.model.domain.WebImage;
 import com.revetkn.site.model.service.WebImageService;
@@ -39,20 +39,19 @@ import com.revetkn.site.model.service.WebImageService;
  * @version $Id$
  * @since 0.1
  */
-public class PhotoController implements Controller
+public class PhotoController extends ParameterizableViewController
 {
     /**
-     * @see org.springframework.web.servlet.mvc.Controller#handleRequest(
-     * javax.servlet.http.HttpServletRequest,
+     * @see org.springframework.web.servlet.mvc.ParameterizableViewController#handleRequestInternal(javax.servlet.http.HttpServletRequest,
      * javax.servlet.http.HttpServletResponse)
      */
-    public ModelAndView handleRequest(HttpServletRequest request,
+    @Override
+    protected ModelAndView handleRequestInternal(HttpServletRequest request,
             HttpServletResponse response) throws Exception
     {
-        List<WebImage> photos = webImageService
-                .findImages(feedUrl);
+        List<WebImage> photos = webImageService.findImages(feedUrl);
 
-        return new ModelAndView(".photo-display", "photos", photos);
+        return new ModelAndView(getViewName(), "photos", photos);
     }
 
     /**
