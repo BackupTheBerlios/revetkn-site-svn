@@ -47,4 +47,24 @@
 		<put name="content" value="/WEB-INF/jsp/photo/display.jsp" />
 	</definition>
 
+	<definition name=".open-source" extends=".template">
+		<put name="title" value="revetkn.com - open source" />
+		<put name="content" value="/WEB-INF/jsp/open-source.jsp" />
+	</definition>
+
+	<definition name=".about" extends=".template">
+		<put name="title" value="revetkn.com - about" />
+		<put name="content" value="/WEB-INF/jsp/about.jsp" />
+	</definition>
+
+	<definition name=".error-feed" extends=".template">
+		<put name="title" value="revetkn.com - feed retrieval error" />
+		<put name="content" value="/WEB-INF/jsp/error/feed.jsp" />
+	</definition>
+
+	<definition name=".error-500" extends=".template">
+		<put name="title" value="revetkn.com - error" />
+		<put name="content" value="/WEB-INF/jsp/error/500.jsp" />
+	</definition>
+
 </tiles-definitions>
