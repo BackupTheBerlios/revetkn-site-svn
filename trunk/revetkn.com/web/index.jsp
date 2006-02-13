@@ -31,7 +31,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-<c:redirect url="/blog.html" />
+<c:redirect url="/blog.url" />
 
 </html>
 
