@@ -35,7 +35,7 @@ import org.apache.commons.logging.LogFactory;
 /**
  * Intercepts method calls to retrieve feeds [really, any method whose first
  * parameter is a unique <tt>String</tt> such as a URL] and caches the
- * results. Useful for
+ * results.
  * <p>
  * Thanks to <a
  * href="http://opensource2.atlassian.com/confluence/spring/display/DISC/Caching+the+result+of+methods+using+Spring+and+EHCache">Omar
