@@ -26,8 +26,54 @@
 
 <%@ include file="/WEB-INF/jsp/taglibs.jsp"%>
 
-<center><c:forEach items="${photos}" var="photo">
+<h2>Various Photos</h2>
 
-	<div id="contentBlock">${photo.description}</div>
+These are pulled from my
+<a href="http://www.flickr.com/photos/revetkn/">Flickr</a>
+account.
 
-</c:forEach></center>
+<div id="center">
+
+<table class="photoTable">
+
+	<c:forEach items="${photos}" var="photo" varStatus="status">
+
+		<c:choose>
+
+			<c:when test="${status.index % 2 == 0}">
+				<tr>
+					<c:choose>
+						<c:when test="${status.last}">
+							<td colspan="2">
+							<p><span class="date"><fmt:formatDate value="${photo.date}"
+								pattern="MMMM d, yyyy 'at' h:mm a" /></span></p>
+							${photo.description}</td>
+				</tr>
+			</c:when>
+
+			<c:otherwise>
+				<td>
+				<p><span class="date"><fmt:formatDate value="${photo.date}"
+					pattern="MMMM d, yyyy 'at' h:mm a" /></span></p>
+				${photo.description}</td>
+			</c:otherwise>
+
+		</c:choose>
+
+		</c:when>
+
+		<c:otherwise>
+			<td>
+			<p><span class="date"><fmt:formatDate value="${photo.date}"
+				pattern="MMMM d, yyyy 'at' h:mm a" /></span></p>
+			${photo.description}</td>
+			</tr>
+		</c:otherwise>
+
+		</c:choose>
+
+	</c:forEach>
+
+</table>
+
+</div>
