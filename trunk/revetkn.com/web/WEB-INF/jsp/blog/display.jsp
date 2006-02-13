@@ -28,8 +28,8 @@
 
 <c:forEach items="${blogEntries}" var="blogEntry">
 
-	<h2><a href="${blogEntry.url}">${blogEntry.title}</a><br />
-	<span class="blogDate"><fmt:formatDate value="${blogEntry.date}"
+	<h2><a class="undecorated" href="${blogEntry.url}">${blogEntry.title}</a><br />
+	<span class="date"><fmt:formatDate value="${blogEntry.date}"
 		pattern="MMMM d, yyyy 'at' h:mm a" /></span></h2>
 
 	<div id="contentBlock">${blogEntry.content}</div>
