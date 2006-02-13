@@ -40,6 +40,8 @@
 			<props>
 				<prop key="/blog.url">blogController</prop>
 				<prop key="/photos.url">photoController</prop>
+				<prop key="/open-source.url">openSourceController</prop>
+				<prop key="/about.url">aboutController</prop>
 			</props>
 		</property>
 
@@ -56,12 +58,24 @@
 		class="com.revetkn.site.controller.webmvc.BlogController">
 		<property name="blogService" ref="blogService" />
 		<property name="feedUrl" value="${feed.blog}" />
+		<property name="viewName" value=".blog-display" />
 	</bean>
 
 	<bean id="photoController"
 		class="com.revetkn.site.controller.webmvc.PhotoController">
 		<property name="webImageService" ref="webImageService" />
 		<property name="feedUrl" value="${feed.photo}" />
+		<property name="viewName" value=".photo-display" />
+	</bean>
+
+	<bean id="openSourceController"
+		class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+		<property name="viewName" value=".open-source" />
+	</bean>
+
+	<bean id="aboutController"
+		class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+		<property name="viewName" value=".about" />
 	</bean>
 
 	<!-- Hibernate session interceptor [opens a session for the duration of the request] -->
@@ -95,13 +109,16 @@
 		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 		<property name="exceptionMappings">
 			<props>
-
-				<!-- Framework exceptions -->
 				<prop
-					key="org.springframework.web.bind.ServletRequestBindingException">
-					.error-parameter
+					key="com.revetkn.site.model.service.WebImageException">
+					.error-feed
 				</prop>
-
+				<prop
+					key="com.revetkn.site.model.service.BlogException">
+					.error-feed
+				</prop>
+				<prop key="java.lang.Exception">.error-500</prop>
+				<prop key="java.lang.RuntimeException">.error-500</prop>
 			</props>
 		</property>
 		<property name="exceptionAttribute">
