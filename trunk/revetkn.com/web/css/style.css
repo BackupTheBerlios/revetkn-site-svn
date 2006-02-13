@@ -57,11 +57,15 @@ body {
 	margin-right: 15%;
 	padding-top: 0px;
 	padding-bottom: 10px;
-	padding-left: 10px;
-	padding-right: 10px;
+	padding-left: 2%;
+	padding-right: 2%;
 	background-color: #FFF;
 	color: #000;
-	border: 2px solid #555;
+	border: 2px solid #555;;
+	padding-right: 2%;
+	font-family: "Bitstream Vera Sans", Tahoma, Trebuchet MS, Arial,
+		Helvetica, sans-serif;
+	font-size: 0.8em;
 }
 
 span.nav {
@@ -88,24 +92,39 @@ span.nav {
 }
 
 a,a:hover,a:visited {
-	font-weight: bold;
-	color: #333;
-	text-decoration: none;
+	color: #000;
 	font-family: "Bitstream Vera Sans", Tahoma, Trebuchet MS, Arial,
 		Helvetica, sans-serif;
+	text-decoration: underline;
 }
 
 a:hover {
 	color: #666;
+}
+
+a.undecorated,a.undecorated-completely {
+	color: #333;
+	text-decoration: none;
+}
+
+a.undecorated:hover {
+	color: #666;
 	text-decoration: underline;
 }
 
-h2 .blogDate {
+h2 .date {
 	color: #333;
 	background-color: transparent;
 	font-family: "Bitstream Vera Sans", Tahoma, Trebuchet MS, Arial,
 		Helvetica, sans-serif;
 	font-size: 12px;
+}
+
+.bordered {
+	border: 2px solid #555;
+}
+
+.date {
 	font-style: italic;
 }
 
@@ -129,12 +148,46 @@ h2 {
 	font-size: 16px;
 }
 
+h3 {
+	font-weight: bold;
+	color: #333;
+	background-color: transparent;
+	font-family: "Bitstream Vera Sans", Tahoma, Trebuchet MS, Arial,
+		Helvetica, sans-serif;
+	font-size: 14px;
+}
+
 #contentBlock {
 	color: #333;
 	background-color: transparent;
 	font-family: "Bitstream Vera Sans", Tahoma, Trebuchet MS, Arial,
 		Helvetica, sans-serif;
-	font-size: .8em;
+}
+
+#center {
+	text-align: center;
+}
+
+table.imageTable {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+td.imageTable {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+table.photoTable {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+tt {
+	font-family: "Lucida Console", "Courier New";
+	font-size: 0.9em;
 }
 
 .code {
@@ -150,5 +203,5 @@ pre {
 	border: 1px solid #555;
 	padding: 5px;
 	font-family: "Lucida Console", "Courier New";
-	font-size: 10px;
+	font-size: .8em;
 }
